@@ -1,6 +1,7 @@
 # DS_lab9
 
 ## rs.status() result
+```
 {
 	"set" : "rs0",
 	"date" : ISODate("2019-10-31T18:12:43.445Z"),
@@ -146,8 +147,10 @@
 	},
 	"operationTime" : Timestamp(1572545560, 1)
 }
+```
 
 ## rs.config() result
+```
 {
 	"_id" : "rs0",
 	"version" : 1,
@@ -211,3 +214,4 @@
 		"replicaSetId" : ObjectId("5db8680a34cb14bac0f664b2")
 	}
 }
+```
