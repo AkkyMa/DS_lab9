@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import axios from 'axios'
 
 function App() {
   return <MainPage/>
@@ -10,14 +9,14 @@ function App() {
 class MainPage extends React.Component {
 
     constructor(props) {
-        super(props)
-        this.update_comments = this.update_comments.bind(this)
-        this.on_click = this.on_click.bind(this)
+        super(props);
+        this.update_comments = this.update_comments.bind(this);
+        this.on_click = this.on_click.bind(this);
         this.state = {'comments': []}
     }
 
     update_comments() {
-        fetch("http://3.133.88.152:5000/api/get_comments")
+        fetch("/api/get_comments")
             .then(response => response.json())
             .then(data => this.setState({comments: data.comments}))
     }
@@ -30,15 +29,15 @@ class MainPage extends React.Component {
     on_click(e) {
         e.preventDefault();
 
-        let nickname_element = document.getElementById("nickname-input")
-        let message_element = document.getElementById("message-input")
+        let nickname_element = document.getElementById("nickname-input");
+        let message_element = document.getElementById("message-input");
 
-        let nickname = nickname_element.value
-        let message = message_element.value
+        let nickname = nickname_element.value;
+        let message = message_element.value;
 
-        message_element.value = ''
+        message_element.value = '';
 
-        fetch('http://3.133.88.152:5000/api/post_comment', {
+        fetch('/api/post_comment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
