@@ -3,13 +3,14 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import jsonify
+from flask_cors import CORS
 
 app = Flask(__name__,
             static_folder="chat-front/public",
             template_folder="chat-front/src")
 app.config["MONGO_URI"] = "mongodb://localhost:27017/test?replicaSet=rs0"
 mongo = PyMongo(app)
-
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route('/api/get_comments', methods=['GET'])
 def get_comments():
